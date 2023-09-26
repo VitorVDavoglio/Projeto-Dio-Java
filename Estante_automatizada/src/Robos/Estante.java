@@ -25,8 +25,13 @@ public class Estante {
     public void listarJogos() {
         System.out.println("Jogos na estante:");
         for (int i = 0; i < jogos.size(); i++) {
-            System.out.println((i + 1) + ". " + jogos.get(i).getNome());
+        	if(i%2 == 0) {
+        		System.out.print((i + 1) + ". " + jogos.get(i).getNome() + " - ");
+        	} else {
+        		System.out.println((i + 1) + ". " + jogos.get(i).getNome());
+        	}
         }
+        //System.out.println();
     }
 
     // Mover o robô para a posição do jogo especificado
@@ -52,6 +57,16 @@ public class Estante {
         }
         System.out.println("Jogo não encontrado na estante.");
     }
+    
+    public void mostrarEstante() {
+    	System.out.println("-=-=-=-=-=-=-=-=-==");
+    	for(int i = 1; i <= jogos.size(); i++) {
+    		System.out.print("|" + i);
+    	}
+    	System.out.print("|");
+    }
+
+
 
     public static void main(String[] args) {
         Estante estante = new Estante();
@@ -66,17 +81,23 @@ public class Estante {
 
         // Listar os jogos na estante (em ordem alfabética)
         estante.listarJogos();
+        estante.mostrarEstante();
 
         // Perguntar ao usuário qual jogo ele deseja inserir
+        System.out.println();
         System.out.print("Qual jogo você deseja inserir na estante? Digite o nome do jogo: ");
         String nomeJogoInserir = scanner.nextLine();
 
         // Criar o novo jogo e adicionar à estante
         Jogo novoJogo = new Jogo(nomeJogoInserir);
         estante.adicionarJogo(novoJogo);
+        
+        // Inserir um jogo na estante e mover o robô
+        estante.moverRoboParaJogo(nomeJogoInserir);
 
         // Listar os jogos na estante novamente (agora em ordem alfabética atualizada)
         estante.listarJogos();
+        estante.mostrarEstante();
 
         // Fechar o scanner
         scanner.close();

@@ -28,6 +28,10 @@ public class Robo {
     public int getPosicao() {
         return posicao;
     }
+    
+    public void desenhandoRobo() {
+    	
+    }
 
     public static void main(String[] args) {
         // Exemplo de uso da classe Robo
